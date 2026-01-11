@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_journal_user,journal.user,model_specialist_journal,group_specialist_user,1,1,1,0
+access_journal_admin,journal.admin,model_specialist_journal,group_specialist_admin,1,1,1,1
+access_template_user,template.user,model_specialist_journal_template,group_specialist_user,1,0,0,0
+access_template_admin,template.admin,model_specialist_journal_template,group_specialist_admin,1,1,1,1

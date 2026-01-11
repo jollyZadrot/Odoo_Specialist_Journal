@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_journal_template_tree" model="ir.ui.view">
+        <field name="name">specialist.journal.template.tree</field>
+        <field name="model">specialist.journal.template</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="content"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_journal_template" model="ir.actions.act_window">
+        <field name="name">Шаблони журналу</field>
+        <field name="res_model">specialist.journal.template</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem id="menu_journal_template_config" 
+              name="Шаблони журналів" 
+              parent="base.menu_administration" 
+              action="action_journal_template" 
+              groups="group_specialist_admin"
+              sequence="50"/>
+</odoo>

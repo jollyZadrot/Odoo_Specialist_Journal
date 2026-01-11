@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_specialist_journal_tree" model="ir.ui.view">
+        <field name="name">specialist.journal.tree</field>
+        <field name="model">specialist.journal</field>
+        <field name="arch" type="xml">
+            <tree string="Журнал записів" multi_edit="1">
+                <field name="date" readonly="1"/>
+                <field name="partner_id" readonly="1"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_specialist_journal_form" model="ir.ui.view">
+        <field name="name">specialist.journal.form</field>
+        <field name="model">specialist.journal</field>
+        <field name="arch" type="xml">
+            <form string="Запис">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="user_id" readonly="1"/>
+                            <field name="template_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    <field name="note" widget="text" placeholder="Ваш запис..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_specialist_journal" model="ir.actions.act_window">
+        <field name="name">Журнал</field>
+        <field name="res_model">specialist.journal</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_journal_root" name="Журнал спеціаліста" parent="contacts.menu_contacts" action="action_specialist_journal" sequence="10"/>
+</odoo>

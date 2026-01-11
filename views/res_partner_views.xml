@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_partner_form_journal_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.journal</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Журнал" name="journal_page">
+                    <field name="journal_ids" context="{'default_partner_id': active_id}">
+                        <tree editable="bottom">
+                            <field name="date" width="150px"/>
+                            <field name="user_id" widget="many2one_avatar_user" readonly="1"/>
+                            <field name="template_ids" 
+                                   widget="many2many_tags" 
+                                   options="{'no_create': True, 'no_open': True}" 
+                                   placeholder="⚡ Додати шаблон..."/>
+                            <field name="note"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_specialist_journal" model="ir.actions.report">
+        <field name="name">Журнал (PDF)</field>
+        <field name="model">specialist.journal</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">specialist.report_journal_template</field>
+        <field name="report_file">specialist.report_journal_template</field>
+        <field name="print_report_name">'Journal'</field>
+        <field name="binding_model_id" ref="model_specialist_journal"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_journal_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>Записи журналу</h2>
+                    <table class="table table-sm mt-4">
+                        <thead>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Клієнт</th>
+                                <th>Спеціаліст</th>
+                                <th>Запис</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="o">
+                                <tr>
+                                    <td><span t-field="o.date"/></td>
+                                    <td><span t-field="o.partner_id"/></td>
+                                    <td><span t-field="o.user_id"/></td>
+                                    <td><span t-field="o.note"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
