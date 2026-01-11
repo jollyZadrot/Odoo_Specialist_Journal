@@ -1,0 +1,1 @@
+# Odoo_Specialist_Journal
